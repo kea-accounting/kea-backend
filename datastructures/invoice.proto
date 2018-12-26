@@ -1,0 +1,58 @@
+// See README.txt for information and build instructions.
+//
+// Note: START and END tags are used in comments to define sections used in
+// tutorials.  They are not part of the syntax for Protocol Buffers.
+//
+// To get an in-depth walkthrough of this file and the related examples, see:
+// https://developers.google.com/protocol-buffers/docs/tutorials
+
+// [START declaration]
+syntax = "proto3";
+package datastructures;
+
+import "google/protobuf/timestamp.proto";
+// [END declaration]
+
+// [START messages]
+message Invoice {
+  string id = 1;  // Unique ID number for this invoice.
+  google.protobuf.Timestamp created = 2;
+  google.protobuf.Timestamp last_updated = 3;
+  string client_id = 4;  // Unique ID number for this person.
+  string contact = 5;
+  string project = 6;
+  string date_invoice = 7;
+  int64 payment_terms = 8;
+  string date_due = 9;
+
+  enum Status {
+    NEW = 0;
+    SENT = 1;
+    PAID = 2;
+    DELETED = 100;
+  }
+  Status status = 10;
+  string currency = 11;
+  string net_amount = 12;
+  string sales_tax = 13;
+  string total_amount = 14;
+
+  message LineItem {
+    int64 quantity = 1;
+    string description = 2;
+    string price = 3;
+    int64 sales_tax_rate = 4;
+    string net_amount = 5;
+    string tax_amount = 6;
+    string total_amount = 7;
+  }
+
+  repeated LineItem lineitems = 15;
+
+  string user_id = 16;
+  string vat_period = 17;
+
+
+}
+
+// [END messages]

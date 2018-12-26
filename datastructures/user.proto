@@ -1,0 +1,38 @@
+// See README.txt for information and build instructions.
+//
+// Note: START and END tags are used in comments to define sections used in
+// tutorials.  They are not part of the syntax for Protocol Buffers.
+//
+// To get an in-depth walkthrough of this file and the related examples, see:
+// https://developers.google.com/protocol-buffers/docs/tutorials
+
+// [START declaration]
+syntax = "proto3";
+package datastructures;
+
+import "google/protobuf/timestamp.proto";
+// [END declaration]
+
+// [START messages]
+message User {
+  string id = 1;
+  google.protobuf.Timestamp created = 2;
+  google.protobuf.Timestamp last_updated = 3;
+  string password = 4;
+  string vrn = 5;
+  string access_token = 6;
+  string refresh_token = 7;
+  string token_expiry = 8;
+  string token_type = 9;
+  string email = 10;  
+
+  enum Status {
+    ACTIVE = 0;
+    DELETED = 100;
+  }
+  Status status = 11;
+  string vat_flat_rate = 12;
+
+}
+
+// [END messages]
